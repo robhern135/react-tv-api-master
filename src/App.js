@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import './App.css';
+import './App.css';
 
 
 
@@ -17,7 +17,7 @@ import React, { Component } from 'react'
 import TopBar from './components/TopBar'
 import Form from './components/Form'
 import People from './components/People'
-
+import Footer from './components/Footer'
 
 const personSearch = `http://api.tvmaze.com/search/people?q=`
 
@@ -50,8 +50,21 @@ class App extends Component {
       console.log(err)
     
     }
+  }
 
+  componentDidUpdate = () => {
+    const people = JSON.stringify(this.state.people)
 
+    localStorage.setItem("people", people)
+
+  }
+
+  componentDidMount = () => {
+    const localPeople = localStorage.getItem('people')
+
+    const people = JSON.parse(localPeople)
+
+    this.setState({ people })
 
   }
 
@@ -61,6 +74,7 @@ class App extends Component {
         <TopBar title="TV Search" />
         <Form getPerson={ this.getPerson } />
         <People people={ this.state.people } />
+        <Footer />
       </div>
     );
   }

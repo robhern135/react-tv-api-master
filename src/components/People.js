@@ -45,9 +45,6 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'flex-start'
   },
-  genderSymbol: {
-    marginRight: 10
-  },
   cardLink: {
     textDecoration: 'none',
     '&:hover': {
@@ -71,14 +68,14 @@ export default function People(props) {
       spacing={2}
       >
         {props.people.map( ( p ) => {
-          const SwitchCase = (props) => {
+          const GenderIcon = (props) => {
             switch(props.value) {
               case 'Male':
-                return <img className={classes.genderSymbol} width={15} height={15} src={maleGenderImg} alt="Male Gender Symbol" />
+                return <img className="genderSymbol" width={15} height={15} src={maleGenderImg} alt="Male Gender Symbol" />
               case 'Female':
-                return <img className={classes.genderSymbol} width={15} height={15} src={femaleGenderImg} alt="Female Gender Symbol" />
+                return <img className="genderSymbol" width={15} height={15} src={femaleGenderImg} alt="Female Gender Symbol" />
               default:
-                return <img className={classes.genderSymbol} width={15} height={15} src={genderlessImg} alt="Genderless Gender Symbol" />
+                return <img className="genderSymbol" width={15} height={15} src={genderlessImg} alt="Genderless Gender Symbol" />
             }
           }
 
@@ -92,7 +89,11 @@ export default function People(props) {
                   to={{
                     pathname: `/actor/${id}`,
                     state: {
-                      person: id
+                      person: id,
+                      birthday: birthday,
+                      gender: gender,
+                      name: name,
+                      image: image
                     }
                   }}
                   component={CardActionArea}>
@@ -110,10 +111,9 @@ export default function People(props) {
                         {name}
                       </Typography>
                       <div className={classes.flexRow} >
-                        <SwitchCase value={gender} />
-                        <Typography variant="body2" color="textPrimary" component="p">
-                        { birthday ? `Born ${birthday}` : 'Birthday not supplied'}
-                        </Typography>
+                        <GenderIcon value={gender} />
+                        { birthday ? <Typography variant="body2" color="textPrimary" component="p">{birthday}</Typography> : null }
+                        
                       </div>
                       
 

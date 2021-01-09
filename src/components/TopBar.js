@@ -32,6 +32,9 @@ export default function TopBar() {
           <Typography variant="h6" className={classes.title}>
             TV Search
           </Typography>
+          {/* <Typography variant="p">
+            Created with Love using the <a style={{color: '#fff', textDecoration: 'underline'}} href="https://www.tvmaze.com/api" rel="noopener noreferrer" target="_blank">TVMaze API</a>
+          </Typography> */}
         </Toolbar>
       </AppBar>
     </div>
