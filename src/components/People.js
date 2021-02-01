@@ -16,8 +16,13 @@ import maleGenderImg from './Images/gender-male.svg'
 import femaleGenderImg from './Images/gender-female.svg'
 import genderlessImg from './Images/gender-other.svg'
 
+
+
 //React Router DOM
 import { Link } from "react-router-dom"
+
+import { COLORS } from '../constants/colors'
+const {  white } = COLORS
 
 const useStyles = makeStyles({
   resultsContainer: {
@@ -47,8 +52,10 @@ const useStyles = makeStyles({
   },
   cardLink: {
     textDecoration: 'none',
+    color: white,
     '&:hover': {
-      textDecoration: 'none'
+      textDecoration: 'none',
+      color: white,
     }
   }
 });
@@ -58,7 +65,7 @@ export default function People(props) {
   return (
     <React.Fragment>
     <CssBaseline />
-    <Container maxWidth="xl">
+    <Container maxWidth="lg">
       <Grid
       container
       direction="row"

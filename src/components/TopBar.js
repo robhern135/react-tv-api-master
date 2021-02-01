@@ -7,9 +7,15 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
+// import { COLORS } from '../constants/colors'
+// const { secondary } = COLORS
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  topBar: {
+    // backgroundColor: secondary
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -24,7 +30,7 @@ export default function TopBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.topBar}>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />

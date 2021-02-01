@@ -1,15 +1,6 @@
 import React, { Component } from 'react'
 import './App.css';
 
-
-
-//http://api.tvmaze.com/search/people?q=sarah+michelle+gellar
-
-
-//get persons ID from above, then below for credits
-//http://api.tvmaze.com/people/35928/castcredits?embed=show
-
-
 //show posters
 // http://api.tvmaze.com/shows/1/images
 
@@ -19,8 +10,39 @@ import Form from './components/Form'
 import People from './components/People'
 import Footer from './components/Footer'
 
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+
+import { theme } from './constants/colors'
+// import { COLORS } from './constants/colors'
+
+// const { background, white, primary, secondary } = COLORS
+
+
 const personSearch = `http://api.tvmaze.com/search/people?q=`
 
+// const theme = createMuiTheme({
+//   palette: {
+//     type: "dark",
+//     primary: {
+//       light: primary[100],
+//       main: primary,
+//       dark: primary[500],
+//       contrastText: '#fff',
+//     },
+//     secondary: {
+//       light: secondary[100],
+//       main: secondary,
+//       dark: secondary[500],
+//       contrastText: '#fff',
+//     },
+//     background: {
+//       default: background,
+//       contrastText: '#fff'
+//     }
+//   },
+// });
 
 // const postersSearch = `http://api.tvmaze.com/shows/35928/images`
 
@@ -55,27 +77,36 @@ class App extends Component {
   componentDidUpdate = () => {
     const people = JSON.stringify(this.state.people)
 
-    localStorage.setItem("people", people)
+    sessionStorage.setItem("people", people)
 
   }
 
+
+  
   componentDidMount = () => {
-    const localPeople = localStorage.getItem('people')
+    const localPeople = sessionStorage.getItem('people')
 
     const people = JSON.parse(localPeople)
 
-    this.setState({ people })
+    people && this.setState({ people }) 
+
+    
 
   }
 
+
   render() {
     return (
-      <div className="App">
-        <TopBar title="TV Search" />
-        <Form getPerson={ this.getPerson } />
-        <People people={ this.state.people } />
-        <Footer />
-      </div>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div className="App" style={{ minHeight: '100vh' }}>
+          <TopBar title="TV Search" />
+          <Form getPerson={ this.getPerson } />
+          <People people={ this.state.people } />
+          {/* <Show show={ this.state.show } /> */}
+          <Footer />
+        </div>
+      </ThemeProvider>
     );
   }
 }

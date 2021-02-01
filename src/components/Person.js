@@ -13,7 +13,7 @@ import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-
+import { ThemeProvider } from '@material-ui/core/styles';
 // import CircularProgress from '@material-ui/core/CircularProgress';
 
 
@@ -28,6 +28,10 @@ import noPoster from './Images/file-duotone.svg'
 import maleGenderImg from './Images/gender-male.svg'
 import femaleGenderImg from './Images/gender-female.svg'
 import genderlessImg from './Images/gender-other.svg'
+
+import { COLORS, theme } from '../constants/colors'
+
+const { white } = COLORS
 
 //debug api link
 //http://api.tvmaze.com/people/5866/castcredits?embed=show
@@ -76,15 +80,15 @@ export default class Person extends React.Component {
           case 'Male':
             return <img className="genderSymbol" width={30} height={30} src={maleGenderImg} alt="Male Gender Symbol" />
           case 'Female':
-            return <img className="genderSymbol" width={30} height={30} src={femaleGenderImg} alt="Female Gender Symbol" />
+            return <img fill={ white } className="genderSymbol" width={30} height={30} src={femaleGenderImg} alt="Female Gender Symbol" />
           default:
             return <img className="genderSymbol" width={30} height={30} src={genderlessImg} alt="Genderless Gender Symbol" />
         }
       }
     return (
-      <div>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         <TopBar />
-          <CssBaseline />
           <Container maxWidth="xl">
             <Grid
             container
@@ -96,7 +100,7 @@ export default class Person extends React.Component {
             >
 
           {/* person info */}
-          <Grid className='personInfo' item xs={12} sm={4} md={3} style={{ width:'100%', position: 'fixed', left:5, top: 40, paddingVertical: 20, paddingTop: 55, textAlign: 'center', display: 'flex', flex: 1, alignItems: 'center', flexDirection: 'column', justifyContent: 'flex-start' }}>
+          <Grid className='personInfo' item xs={12} sm={4} md={3} lg={2} style={{ width:'100%', position: 'fixed', left:5, top: 40, paddingVertical: 20, paddingTop: 55, textAlign: 'center', display: 'flex', flex: 1, alignItems: 'center', flexDirection: 'column', justifyContent: 'flex-start' }}>
             <Card style={{ width: '100%'}}>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">{currentName}</Typography>
@@ -121,7 +125,7 @@ export default class Person extends React.Component {
           </Grid>
           {/* end person info */}
 
-          <Grid className='showInfo' item xs={12} sm={8} md={9} style={{ paddingTop: 40, display: 'flex', flexWrap: 'wrap' }}>
+          <Grid className='showInfo' item xs={12} sm={8} md={9} lg={10} style={{ paddingTop: 40, display: 'flex', flexWrap: 'wrap' }}>
           
             { this.state.activeCredits.length !== 0 ? <React.Fragment>
               { this.state.activeCredits.map( (currentShow) => {
@@ -129,15 +133,15 @@ export default class Person extends React.Component {
               const { name, id, rating, network, image} = currentShow._embedded.show
               
               return(
-                <Grid key={id} item xs={12} sm={6} md={4} style={{ flexGrow: 1, flex: '0 0 50%', paddingBottom: 20, paddingRight: 20}}>
+                <Grid key={id} item xs={12} sm={6} md={4} lg={3} style={{ flexGrow: 1, flex: '0 0 50%', paddingBottom: 20, paddingRight: 20}}>
                   <Card>
-                  {/* <Link
-                    className={classes.cardLink}
+                  <Link
+                    // className={classes.cardLink}
                     to={{
-                      pathname: `/actor/${id}`,
-                      state: { person: id }
+                      pathname: `/show/${id}`,
+                      state: { currentShow: id }
                     }}
-                    component={CardActionArea}> */}
+                    component={CardActionArea}>
                     <CardActionArea>
                       <CardMedia
                         className={ image ? 'mainImage' : 'mainImageContained'}
@@ -154,13 +158,14 @@ export default class Person extends React.Component {
                             {network ? <Typography variant="body2" color="textSecondary" component="p" style={{ marginRight: 10}}>{network.name}</Typography> : null}
                           
                           {rating && rating.average
-                          ? <Typography variant="body2" color="textSecondary" style={{ padding: 5, backgroundColor: rating.average <= 5 ? 'red' : 'green' , borderRadius: 5, color: '#fff' }} component="p">
+                          ? <Typography variant="body2" color="textSecondary" style={{ padding: 5, backgroundColor: rating.average <= 5 ? 'red' : 'green' , borderRadius: 5, color: white }} component="p">
                           {rating ? rating.average : null}</Typography>
                           : null
                         }
                         </div>
                       </CardContent>
                     </CardActionArea>
+                  </Link>
                 </Card>
               </Grid>
               )
@@ -183,7 +188,7 @@ export default class Person extends React.Component {
           
         </Grid>
       </Container>
-      </div>
+      </ThemeProvider>
     )
   }
 }

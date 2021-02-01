@@ -98,3 +98,6 @@ img {
   text-decoration: none;
   color: inherit;
 }
+.whiteBtn:hover {
+  color: #fff;
+}
