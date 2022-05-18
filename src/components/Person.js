@@ -50,7 +50,6 @@ const Person = ({ location }) => {
       const creditsSearch = `http://api.tvmaze.com/people/${currentActor}/castcredits?embed=show`
 
       try {
-        //cors anywhere here just incase https://cors-anywhere.herokuapp.com/
         const CREDITS_CALL = await fetch(`${creditsSearch}`)
 
         const res = await CREDITS_CALL.json()

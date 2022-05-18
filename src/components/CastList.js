@@ -11,7 +11,7 @@ import InfoIcon from "@material-ui/icons/Info"
 // import Slide from '@material-ui/core/Slide';
 
 //React Router DOM
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,12 +77,26 @@ const CastList = ({ activeCast }) => {
                 subtitle={<span>as {cast.character.name}</span>}
                 actionIcon={
                   cast.person.image ? (
-                    <IconButton
-                      aria-label={`info about ${cast.person.name}`}
-                      className={classes.icon}
+                    <Link
+                      // className={classes.cardLink}
+                      to={{
+                        pathname: `/actor/${cast.person.id}`,
+                        state: {
+                          person: cast.person.id,
+                          birthday: cast.person.birthday,
+                          gender: cast.person.gender,
+                          name: cast.person.name,
+                          image: cast.person.image,
+                        },
+                      }}
                     >
-                      <InfoIcon />
-                    </IconButton>
+                      <IconButton
+                        aria-label={`Read about ${cast.person.name}`}
+                        className={classes.icon}
+                      >
+                        <InfoIcon />
+                      </IconButton>
+                    </Link>
                   ) : null
                 }
               />
