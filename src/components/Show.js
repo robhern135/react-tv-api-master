@@ -69,18 +69,8 @@ const Show = ({ location }) => {
     fetchData()
   }, [])
 
-  const {
-    name,
-    genres,
-    status,
-    premiered,
-    rating,
-    network,
-    image,
-    summary,
-    officialSite,
-    url,
-  } = activeShow
+  const { name, status, premiered, image, summary, officialSite, url, genres } =
+    activeShow
 
   return (
     <ThemeProvider theme={theme}>
@@ -132,8 +122,8 @@ const Show = ({ location }) => {
                 justifyContent: "flex-start",
               }}
             >
-              {activeShow.genres &&
-                activeShow.genres.map((genre) => (
+              {genres &&
+                genres.map((genre) => (
                   <Typography
                     key={genre}
                     style={{
