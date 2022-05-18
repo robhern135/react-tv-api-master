@@ -1,10 +1,10 @@
-import React from 'react'
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React from "react"
+import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 //Components
-import App from '../App'
-import Person from '../components/Person'
-import Show from '../components/Show'
+import App from "../App"
+import Person from "../components/Person"
+import Show from "../components/Show"
 
 const Router = () => (
   <BrowserRouter>
@@ -16,6 +16,6 @@ const Router = () => (
       <Route path="/show/:id" component={Show} />
     </Switch>
   </BrowserRouter>
-);
+)
 
-export default Router;
+export default Router

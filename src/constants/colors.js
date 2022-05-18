@@ -1,21 +1,21 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-
+import { createMuiTheme } from "@material-ui/core/styles"
+import { createTheme } from "@material-ui/core/styles"
 
 export const COLORS = {
-  background: '#1a1a2e',
-  primary: '#0f3460',
-  secondary: '#e94560',
-  white: '#ffffff'
+  background: "#1a1a2e",
+  primary: "#0f3460",
+  secondary: "#e94560",
+  white: "#ffffff",
 }
 
 const { primary, secondary, white, background } = COLORS
 
-export const theme = createMuiTheme({
+export const theme = createTheme({
   palette: {
     contained: {
       "&:hover": {
-        color: white
-      }
+        color: white,
+      },
     },
     type: "dark",
     primary: {
@@ -32,7 +32,7 @@ export const theme = createMuiTheme({
     },
     background: {
       default: background,
-      contrastText: white
-    }
+      contrastText: white,
+    },
   },
-});
+})
