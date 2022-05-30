@@ -20,28 +20,6 @@ import { theme } from "./constants/colors"
 
 const personSearch = `http://api.tvmaze.com/search/people?q=`
 
-// const theme = createMuiTheme({
-//   palette: {
-//     type: "dark",
-//     primary: {
-//       light: primary[100],
-//       main: primary,
-//       dark: primary[500],
-//       contrastText: '#fff',
-//     },
-//     secondary: {
-//       light: secondary[100],
-//       main: secondary,
-//       dark: secondary[500],
-//       contrastText: '#fff',
-//     },
-//     background: {
-//       default: background,
-//       contrastText: '#fff'
-//     }
-//   },
-// });
-
 // const postersSearch = `http://api.tvmaze.com/shows/35928/images`
 
 class App extends Component {
@@ -87,7 +65,6 @@ class App extends Component {
           <TopBar title="TV Search" />
           <Form getPerson={this.getPerson} />
           <People people={this.state.people} />
-          {/* <Show show={ this.state.show } /> */}
           <Footer />
         </div>
       </ThemeProvider>

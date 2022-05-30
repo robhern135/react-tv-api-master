@@ -32,7 +32,13 @@ const useStyles = makeStyles({
   },
   outerGrid: {
     flexGrow: 1,
+    alignItems: "stretch",
   },
+  // castItem: {
+  //   flexGrow: 1,
+  //   flex: 1,
+  //   alignSelf: "stretch",
+  // },
   mainImage: {
     objectFit: "cover",
     objectPosition: "center",
@@ -42,6 +48,12 @@ const useStyles = makeStyles({
     objectPosition: "center",
     padding: 20,
   },
+  cardStyle: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "stretch",
+  },
   flexRow: {
     display: "flex",
     flexDirection: "row",
@@ -49,12 +61,19 @@ const useStyles = makeStyles({
     justifyContent: "flex-start",
   },
   cardLink: {
+    height: "100%",
+    flex: 1,
     textDecoration: "none",
     color: white,
     "&:hover": {
       textDecoration: "none",
       color: white,
     },
+  },
+  cardActionArea: {
+    height: "100%",
+    alignItems: "flex-start",
+    flexDirection: "column",
   },
 })
 
@@ -111,8 +130,15 @@ const People = ({ people }) => {
             const { name, birthday, id, image, gender } = p.person
 
             return (
-              <Grid key={id} item xs={12} sm={6} md={3}>
-                <Card>
+              <Grid
+                key={id}
+                item
+                xs={12}
+                sm={6}
+                md={3}
+                className={classes.castItem}
+              >
+                <Card className={classes.cardStyle}>
                   <Link
                     className={classes.cardLink}
                     to={{
@@ -127,7 +153,7 @@ const People = ({ people }) => {
                     }}
                     component={CardActionArea}
                   >
-                    <CardActionArea>
+                    <CardActionArea className={classes.cardActionArea}>
                       <CardMedia
                         className={
                           image ? classes.mainImage : classes.mainImageContained
@@ -164,14 +190,6 @@ const People = ({ people }) => {
                         </div>
                       </CardContent>
                     </CardActionArea>
-                    {/* <CardActions>
-                    <Button size="small" color="primary">
-                      Share
-                    </Button>
-                    <Button size="small" color="primary">
-                      Learn More
-                    </Button>
-                  </CardActions> */}
                   </Link>
                 </Card>
               </Grid>

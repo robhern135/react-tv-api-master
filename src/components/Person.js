@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import "../App.css"
 
 //Material UI
+import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
 import CardActionArea from "@material-ui/core/CardActionArea"
 import CardActions from "@material-ui/core/CardActions"
@@ -32,10 +33,36 @@ import { COLORS, theme } from "../constants/colors"
 
 const { white } = COLORS
 
+const useStyles = makeStyles({
+  cardLink: {
+    height: "100%",
+    flex: 1,
+    textDecoration: "none",
+    color: white,
+    "&:hover": {
+      textDecoration: "none",
+      color: white,
+    },
+  },
+  cardStyle: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "stretch",
+  },
+  cardActionArea: {
+    height: "100%",
+    alignItems: "flex-start",
+    flexDirection: "column",
+  },
+})
+
 //debug api link
 //http://api.tvmaze.com/people/5866/castcredits?embed=show
 
 const Person = ({ location }) => {
+  const classes = useStyles()
+
   const [currentActor, setCurrentActor] = useState(location.state.person)
   const [activeCredits, setActiveCredits] = useState([])
   const [currentBirthday, setCurrentBirthday] = useState(
@@ -220,16 +247,16 @@ const Person = ({ location }) => {
                         paddingRight: 20,
                       }}
                     >
-                      <Card>
+                      <Card className={classes.cardStyle}>
                         <Link
-                          // className={classes.cardLink}
+                          className={classes.cardLink}
                           to={{
                             pathname: `/show/${id}`,
                             state: { currentShow: id },
                           }}
                           component={CardActionArea}
                         >
-                          <CardActionArea>
+                          <CardActionArea className={classes.cardActionArea}>
                             <CardMedia
                               className={
                                 image ? "mainImage" : "mainImageContained"
