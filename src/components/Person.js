@@ -58,7 +58,7 @@ const useStyles = makeStyles({
 })
 
 //debug api link
-//http://api.tvmaze.com/people/5866/castcredits?embed=show
+//https://api.tvmaze.com/people/5866/castcredits?embed=show
 
 const Person = ({ location }) => {
   const classes = useStyles()
@@ -74,7 +74,7 @@ const Person = ({ location }) => {
 
   useEffect(() => {
     const fetchCredits = async () => {
-      const creditsSearch = `http://api.tvmaze.com/people/${currentActor}/castcredits?embed=show`
+      const creditsSearch = `https://api.tvmaze.com/people/${currentActor}/castcredits?embed=show`
 
       try {
         const CREDITS_CALL = await fetch(`${creditsSearch}`)

@@ -32,7 +32,7 @@ const SeasonTile = ({ seasonID, seasonLength }) => {
   const classes = useStyles()
   const [episodes, setEpisodes] = useState([])
 
-  const episodesURL = `http://api.tvmaze.com/seasons/${seasonID}/episodes`
+  const episodesURL = `https://api.tvmaze.com/seasons/${seasonID}/episodes`
 
   // const epHeight = 36
 

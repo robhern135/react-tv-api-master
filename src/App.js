@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import "./App.css"
 
 //show posters
-// http://api.tvmaze.com/shows/1/images
+// https://api.tvmaze.com/shows/1/images
 
 //Components
 import TopBar from "./components/TopBar"
@@ -20,7 +20,7 @@ import { theme } from "./constants/colors"
 
 const personSearch = `https://api.tvmaze.com/search/people?q=`
 
-// const postersSearch = `http://api.tvmaze.com/shows/35928/images`
+// const postersSearch = `https://api.tvmaze.com/shows/35928/images`
 
 class App extends Component {
   state = {

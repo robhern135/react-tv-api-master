@@ -33,16 +33,16 @@ const Show = ({ location }) => {
   const [activeEpisodes, setActiveEpisodes] = useState([])
 
   //show posters
-  // http://api.tvmaze.com/shows/1/images
+  // https://api.tvmaze.com/shows/1/images
 
   //show search
-  // http://api.tvmaze.com/shows/1
+  // https://api.tvmaze.com/shows/1
 
   useEffect(() => {
     const fetchData = async () => {
-      const showSearch = `http://api.tvmaze.com/shows/${currentShow}`
-      const castSearch = `http://api.tvmaze.com/shows/${currentShow}/cast`
-      const seasonsSearch = `http://api.tvmaze.com/shows/${currentShow}/seasons`
+      const showSearch = `https://api.tvmaze.com/shows/${currentShow}`
+      const castSearch = `https://api.tvmaze.com/shows/${currentShow}/cast`
+      const seasonsSearch = `https://api.tvmaze.com/shows/${currentShow}/seasons`
 
       try {
         //cors anywhere here just incase https://cors-anywhere.herokuapp.com/
