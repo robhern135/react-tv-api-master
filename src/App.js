@@ -18,7 +18,7 @@ import { theme } from "./constants/colors"
 
 // const { background, white, primary, secondary } = COLORS
 
-const personSearch = `http://api.tvmaze.com/search/people?q=`
+const personSearch = `https://api.tvmaze.com/search/people?q=`
 
 // const postersSearch = `http://api.tvmaze.com/shows/35928/images`
 

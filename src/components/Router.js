@@ -7,7 +7,7 @@ import Person from "../components/Person"
 import Show from "../components/Show"
 
 const Router = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Switch>
       <Route path="/" component={App} exact />
       {/* anything after : in react router is a parameter,
