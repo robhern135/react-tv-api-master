@@ -195,7 +195,7 @@ const Show = ({ location }) => {
             <CastList activeCast={activeCast} />
           </Grid>
 
-          <Grid
+          {/* <Grid
             item
             xs={12}
             sm={12}
@@ -209,7 +209,7 @@ const Show = ({ location }) => {
             }}
           >
             <SeasonList activeSeasons={activeSeasons} />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </ThemeProvider>
